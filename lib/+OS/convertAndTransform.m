@@ -337,8 +337,8 @@ function [ varargout ] = convertAndTransform(x,y,varargin)
                         fprintf('Attempting to import OSTN02 look-up-table...\n');
                     end
                     
-                    command = ['load(''OSTN02_OSGM02_GB.mat'');']
-                    evalin('base', command)
+                    command = ['load(''OSTN02_OSGM02_GB.mat'');'];
+                    evalin('base', command);
                     options.lut=evalin('base',lutVarName);
                 catch % didn't load data- 
                     fprintf('Unable to load look up table for transformation\n')
