@@ -33,19 +33,19 @@ function [ absEasting, absNorthing ] = grid2num(varargin)
     
     if nargin == 3
         gridCode         = varargin{1};
-        relativeEasting  = varargin{2}; 
+        relativeEasting  = varargin{2};
         relativeNorthing = varargin{3};
     elseif nargin == 1
         parts = strsplit(varargin{1}, ' ');
         
         gridCode         = parts{1};
-        relativeEasting  = str2num(parts{2}; 
-        relativeNorthing = str2num(parts{3});
+        relativeEasting  = parts{2}; 
+        relativeNorthing = parts{3};
     end
     
-    [eastGridCell, northGridCell] = find(strcmp(gridCode, OS.nationalGrid));
-    
-    absEasting  = (eastGridCell - 1)  * 100000 + OS.gridDistanceMetres(relativeEasting);
-    absNorthing = (northGridCell - 1) * 100000 + OS.gridDistanceMetres(relativeNorthing);
+    [northGridCell,eastGridCell] = find(strcmp(gridCode, OS.nationalGrid));
+
+    absEasting  = (eastGridCell - 1)  * 100000 + OS.ngrDistance(relativeEasting);
+    absNorthing = (northGridCell - 1) * 100000 + OS.ngrDistance(relativeNorthing);
 end
 

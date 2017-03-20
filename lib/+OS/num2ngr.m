@@ -44,8 +44,11 @@ function [ ngrCode, relativeEasting, relativeNorthing ] = num2ngr(absEasting, ab
     relativeEasting  = absEasting  - (cellEasting - 1) * 100000;
     relativeNorthing = absNorthing - (cellNorthing - 1) * 100000;
     
+    relativeEasting = sprintf('%05d',relativeEasting);
+    relativeNorthing = sprintf('%05d',relativeNorthing);
+    
     if nargout < 3
-        ngrCode = strjoin({ngrCode num2str(relativeEasting) num2str(relativeNorthing)}, ' ')
+        ngrCode = strjoin({ngrCode num2str(relativeEasting) num2str(relativeNorthing)}, ' ');
     end
 end
 
