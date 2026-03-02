@@ -146,10 +146,10 @@ persistent lut02 lut15
 offshoreWarned=false;
 switch options.version
     case 2002
-        if isempty(lut02), lut02 = readmatrix('OSTN02_OSGM02_GB.txt'); end
+        if isempty(lut02), lut02 = importdata('OSTN02_OSGM02_GB.mat'); end
         lut = lut02;
     case 2015
-        if isempty(lut15), lut15 = readmatrix('OSTN15_OSGM15_DataFile.txt'); end
+        if isempty(lut15), lut15 = importdata('OSTN15_OSGM15_DataFile.mat'); end
         lut = lut15;
     otherwise
         error('Invalid version');
