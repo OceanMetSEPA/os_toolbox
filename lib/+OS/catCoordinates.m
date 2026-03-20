@@ -561,8 +561,10 @@ end
     function ok=isInBounds(row,lut)
         ok=true;
         if(row<1||row>size(lut,1))
-            error('POINT IS OUT OF TRANSFORMATION AREA! Aborting...')
-%            ok=false;
+            if options.warning
+                warning('POINT IS OUT OF TRANSFORMATION AREA! ')
+            end
+            ok=false;
         end
     end
 
